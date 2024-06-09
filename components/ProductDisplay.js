@@ -25,6 +25,7 @@ app.component("product-display", {
           <button class="button" v-on:click="removeFromCart" >Remove Item</button>
         </div>
       </div>
+       <review-form @review-submitted="addReview"></review-form>
     </div>
     `,
   data() {
@@ -34,6 +35,7 @@ app.component("product-display", {
       selectedVariant: 0,
       onSale: false,
       details: ["50% cotton", "30% wool", "20% polyester"],
+      reviews: [],
       variants: [
         {
           id: 2234,
@@ -61,6 +63,9 @@ app.component("product-display", {
     },
     updateVariant(index) {
       this.selectedVariant = index;
+    },
+    addReview(review) {
+      this.reviews.push(review);
     },
   },
   computed: {
